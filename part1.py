@@ -11,25 +11,26 @@ class TreeNode:
         self.right = right
 
 
-class List2Tree:
-    def listToBST(self, headNode: ListNode) -> TreeNode:
+class Solution:
+    def sortedListToBST(self, head: ListNode) -> TreeNode:
 
-        if not headNode:
+        if not head:
             return None
-        if not headNode.next:
-            return TreeNode(headNode.val)
+        if not head.next:
+            return TreeNode(head.val)
 
-        slowPtr = fastPtr = headNode
-        preNode = None
-        while fastPtr and fastPtr.next:
-            preNode = slowPtr
-            slowPtr = slowPtr.next
-            fastPtr = fastPtr.next.next
+        slow = fast = head
+        pre = None
+        while fast and fast.next:
+            pre = slow
+            slow = slow.next
+            fast = fast.next.next
 
-        preNode.next = None
+        pre.next = None
 
-        root = TreeNode(slowPtr.val)
-        root.left = self.listToBST(headNode)
-        root.right = self.listToBST(slowPtr.next)
+        root = TreeNode(slow.val)
+        root.left = self.sortedListToBST(head)
+        root.right = self.sortedListToBST(slow.next)
 
         return root
+
