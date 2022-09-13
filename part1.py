@@ -1,22 +1,35 @@
-class Solution:
-    def sortedListToBST(self, head: ListNode) -> TreeNode:
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.val = next
 
-        if not head:
+
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+class List2Tree:
+    def listToBST(self, headNode: ListNode) -> TreeNode:
+
+        if not headNode:
             return None
-        if not head.next:
-            return TreeNode(head.val)
+        if not headNode.next:
+            return TreeNode(headNode.val)
 
-        slow = fast = head
-        pre = None
-        while fast and fast.next:
-            pre = slow
-            slow = slow.next
-            fast = fast.next.next
+        slowPtr = fastPtr = headNode
+        preNode = None
+        while fastPtr and fastPtr.next:
+            preNode = slowPtr
+            slowPtr = slowPtr.next
+            fastPtr = fastPtr.next.next
 
-        pre.next = None
+        preNode.next = None
 
-        root = TreeNode(slow.val)
-        root.left = self.sortedListToBST(head)
-        root.right = self.sortedListToBST(slow.next)
+        root = TreeNode(slowPtr.val)
+        root.left = self.listToBST(headNode)
+        root.right = self.listToBST(slowPtr.next)
 
         return root
