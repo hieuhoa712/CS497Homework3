@@ -1,8 +1,8 @@
 class Solution:
     def largestValues(self, root):
-        maxes = []
-        row = [root]
-        while any(row):
-            maxes.append(max(node.val for node in row))
-            row = [kid for node in row for kid in (node.left, node.right) if kid]
-        return maxes  
+        maxValue = []
+        BSTrow = [root]
+        while any(BSTrow):
+            maxValue.append(max(node.val for node in BSTrow))
+            BSTrow = [childNode for TreeNode in BSTrow for childNode in (TreeNode.left, TreeNode.right) if childNode]
+        return maxValue  
