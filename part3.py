@@ -5,7 +5,7 @@ class TreeNode:
         self.right = right
 
 
-class Solution:
+class TreeSum:
     def maxPathSum(self, root: TreeNode) -> int:
         resultNumb = [root.val]
 

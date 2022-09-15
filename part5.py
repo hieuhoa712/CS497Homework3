@@ -5,7 +5,7 @@ class TreeNode:
         self.right = right
 
 
-class Solution:
+class TreeBalancing:
     def balanceBST(self, root: TreeNode) -> TreeNode:
         val = []
         def dfs(node):

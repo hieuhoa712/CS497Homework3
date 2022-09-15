@@ -1,4 +1,4 @@
-class Solution:
+class TreeLargest:
     def largestValues(self, root):
         maxValue = []
         BSTrow = [root]
